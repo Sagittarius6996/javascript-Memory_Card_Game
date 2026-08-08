@@ -1,0 +1,59 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(98, 99, 102);
+
+}
+
+.container{
+    width: 50vw;
+    height: 50vh;
+    display: grid;
+    gap: 20px;
+    background-color: rgb(57, 54, 54);
+    border-radius: 20px;
+}
+
+.util{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: x-large;
+}
+
+.game{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.restart-btn{
+    width: 120px;
+    height: 40px;
+
+    background-color: #2d2d2d;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 20px;
+}
+
+.restart-btn:hover{
+    background-color: #2196F3;
+}
