@@ -10,15 +10,6 @@ body{
 
 }
 
-.container{
-    width: 50vw;
-    height: 50vh;
-    display: grid;
-    gap: 20px;
-    background-color: rgb(57, 54, 54);
-    border-radius: 20px;
-}
-
 .util{
     display: flex;
     justify-content: center;
@@ -56,4 +47,57 @@ body{
 
 .restart-btn:hover{
     background-color: #2196F3;
+}
+
+#board{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 50vw;
+    height: 50vh;
+    background-color: rgb(57, 54, 54); 
+    border-radius: 20px;
+    position: relative;
+    perspective: 2000px;
+    overflow: hidden;   
+}
+
+.card{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    background-color: white;
+}
+
+.card .back{
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    transform: rotateY(180deg);
+    top:0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+
+.card .front{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    backface-visibility: hidden;
+    top:0;
+    left: 0;
+
+}
+
+.card.flip {
+    transform: rotatey(180deg);
 }
