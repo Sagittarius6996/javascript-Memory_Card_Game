@@ -1,103 +1,273 @@
-body{
+* {
+    box-sizing: border-box;
+}
+
+body {
     margin: 0;
-    padding: 0;
-    overflow: hidden;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: rgb(98, 99, 102);
 
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #222;
 }
 
-.util{
+.game {
+    width: 700px;
+    max-width: 90vw;
+
     display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: x-large;
+    flex-direction: column;
 }
 
-.game{
+
+/* Header */
+
+.game-header {
+    margin-bottom: 25px;
     display: flex;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    height: 100vh;
 }
 
-.restart-btn{
-    width: 120px;
-    height: 40px;
+h1 {
+    margin: 0 0 12px;
+    font-size: 42px;
+    text-align: center;
+}
+.eyebrow {
+    margin: 0 auto 10px;
+    padding: 6px 14px;
 
-    background-color: #2d2d2d;
-    color: white;
+    width: fit-content;
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    color: #4f46e5;
+
+    border: 2px solid #4f46e5;
+    border-radius: 8px;
+}
+
+
+.subtitle {
+    margin: 0;
+    padding: 12px 20px;
+
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #555;
+
+    border: 2px solid gray;
+    border-radius: 10px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Stats */
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-icon {
+    font-size: 24px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+}
+
+#moves,
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* Board */
+
+#board {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    padding: 12px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+
+    background-color: white;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    perspective: 1000px;
+}
+
+
+/* Cards */
+
+.card {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+
+/* Card sides */
+
+.card .front,
+.card .back {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+
+    backface-visibility: hidden;
+}
+
+
+/* Front */
+
+.card .front {
+    background-color: rgba(49, 49, 52, 0.979);
+}
+
+
+/* Back */
+
+.card .back {
+    background-color: rgb(48, 45, 45);
+
+    border: 2px solid rgba(49, 49, 52, 0.979);;
+
+    transform: rotateY(180deg);
+
+    font-size: 42px;
+}
+
+
+/* Flip */
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+
+/* Hover */
+
+.card:not(.matched):not(.flip):hover {
+    transform: translateY(-3px);
+}
+
+
+/* Matched */
+
+.card.matched .back {
+    background-color: #ecfdf5;
+    border-color: #22c55e;
+}
+
+
+/* Restart */
+
+#restart-btn {
+    width: 140px;
+    height: 42px;
+
+    margin-top: 20px;
+    align-self: center;
 
     border: none;
-    border-radius: 8px;
+    border-radius: 7px;
+
+    background-color: #222;
+    color: white;
 
     font-size: 16px;
     font-weight: bold;
 
     cursor: pointer;
-
-    margin-top: 20px;
 }
 
-.restart-btn:hover{
-    background-color: #2196F3;
+#restart-btn:hover {
+    background-color: #4f46e5;
 }
 
-#board{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    width: 50vw;
-    height: 50vh;
-    background-color: rgb(57, 54, 54); 
-    border-radius: 20px;
-    position: relative;
-    perspective: 2000px;
-    overflow: hidden;   
-}
-
-.card{
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    background-color: white;
-}
-
-.card .back{
-    background-color: transparent;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    transform: rotateY(180deg);
-    top:0;
-    left: 0;
-    backface-visibility: hidden;
+#restart-btn:active {
+    transform: scale(0.97);
 }
 
 
-.card .front{
-    background-color: black;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    backface-visibility: hidden;
-    top:0;
-    left: 0;
+/* Mobile */
 
-}
+@media (max-width: 600px) {
 
-.card.flip {
-    transform: rotatey(180deg);
+    .game {
+        width: 94vw;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .stats {
+        margin-bottom: 10px;
+    }
+
+    #moves,
+    #timer {
+        font-size: 17px;
+    }
+
+    #board {
+        gap: 8px;
+        padding: 9px;
+    }
+
+    .card .back {
+        font-size: 30px;
+    }
 }

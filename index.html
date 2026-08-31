@@ -3,20 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Memory Card Game</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="game">
-        <h1>Memory Cards</h1>
-        <div class="util">
-            <div id="moves">Moves: 0</div>
-            <div>Time: 00:00:00</div>
-        </div>
-    <div class="container" id="board"></div>
-<button class="restart-btn">Restart</button>
-</div>
-</div>
+
+    <main class="game">
+
+        <header class="game-header">
+            <p class="eyebrow">MEMORY CHALLENGE</p>
+            <h1>Memory Cards</h1>
+            <p class="subtitle">
+                Find all the matching pairs in the least moves and time.
+            </p>
+        </header>
+
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <span class="stat-icon">👣</span>
+
+                <div>
+                    <span class="stat-label">Moves</span>
+                    <div id="moves">Moves: 0</div>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-icon">⏱️</span>
+
+                <div>
+                    <span class="stat-label">Time</span>
+                    <div id="timer">00:00</div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <div id="board"></div>
+
+
+        <button id="restart-btn">
+            <span>↻</span>
+            Restart Game
+        </button>
+
+    </main>
+
 
     <script src="script.js"></script>
 
